@@ -97,13 +97,13 @@ export default defineNuxtConfig({
       apiToken: '',
     },
     public: {
-      privacyPolicyUrl: '',
+      privacyPolicyUrl: process.env.NUXT_PUBLIC_PRIVACY_POLICY_URL || '',
       // We use LibreTranslate (https://github.com/LibreTranslate/LibreTranslate) as
       // our default translation server #76
       translateApi: '',
       // Use the instance where Elk has its Mastodon account as the default
-      defaultServer: 'm.webtoo.ls',
-      singleInstance: false,
+      defaultServer: process.env.NUXT_PUBLIC_DEFAULT_SERVER || 'm.webtoo.ls',
+      singleInstance: process.env.NUXT_PUBLIC_SINGLE_INSTANCE || false,
     },
     storage: {
       fsBase: 'node_modules/.cache/app',
