@@ -99,7 +99,7 @@ export default defineNuxtConfig({
       apiToken: '',
     },
     public: {
-      privacyPolicyUrl: '',
+      privacyPolicyUrl: 'https://mozilla.social/privacy-policy',
       // We use LibreTranslate (https://github.com/LibreTranslate/LibreTranslate) as
       // our default translation server #76
       translateApi: '',
