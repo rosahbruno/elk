@@ -99,13 +99,13 @@ export default defineNuxtConfig({
       apiToken: '',
     },
     public: {
-      privacyPolicyUrl: 'https://mozilla.social/privacy-policy',
+      privacyPolicyUrl: process.env.NUXT_PUBLIC_PRIVACY_POLICY_URL || '',
       // We use LibreTranslate (https://github.com/LibreTranslate/LibreTranslate) as
       // our default translation server #76
       translateApi: '',
       // Use the instance where Elk has its Mastodon account as the default
-      defaultServer: 'mozilla.social',
-      singleInstance: false,
+      defaultServer: process.env.NUXT_PUBLIC_DEFAULT_SERVER || 'm.webtoo.ls',
+      singleInstance: process.env.NUXT_PUBLIC_SINGLE_INSTANCE === 'true' || false,
     },
     storage: {
       fsBase: 'node_modules/.cache/app',
@@ -141,22 +141,22 @@ export default defineNuxtConfig({
       {
         dir: '~/public/avatars',
         maxAge: 24 * 60 * 60 * 30, // 30 days
-        baseURL: '/elk/avatars',
+        baseURL: '/avatars',
       },
       {
         dir: '~/public/emojis',
         maxAge: 24 * 60 * 60 * 15, // 15 days, matching service worker
-        baseURL: '/elk/emojis',
+        baseURL: '/emojis',
       },
       {
         dir: '~/public/fonts',
         maxAge: 24 * 60 * 60 * 365, // 1 year (versioned)
-        baseURL: '/elk/fonts',
+        baseURL: '/fonts',
       },
       {
         dir: '~/public/shiki',
         maxAge: 24 * 60 * 60 * 365, // 1 year, matching service worker
-        baseURL: '/elk/shiki',
+        baseURL: '/shiki',
       },
     ],
   },
@@ -196,7 +196,7 @@ export default defineNuxtConfig({
     },
   },
   app: {
-    baseURL: '/elk/',
+    baseURL: '/',
     keepalive: true,
     head: {
       viewport: 'width=device-width,initial-scale=1,viewport-fit=cover',
@@ -205,8 +205,8 @@ export default defineNuxtConfig({
       },
       link: [
         { rel: 'icon', href: '/favicon.ico', sizes: 'any' },
-        { rel: 'icon', type: 'image/svg+xml', href: '/elk/logo.svg' },
-        { rel: 'apple-touch-icon', href: '/elk/apple-touch-icon.png' },
+        { rel: 'icon', type: 'image/svg+xml', href: '/logo.svg' },
+        { rel: 'apple-touch-icon', href: '/apple-touch-icon.png' },
       ],
       meta: [
         { name: 'apple-mobile-web-app-status-bar-style', content: 'black-translucent' },
