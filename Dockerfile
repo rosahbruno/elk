@@ -8,6 +8,7 @@ FROM base AS builder
 # Make two NUXT_PUBLIC vars changeable during builds
 ARG NUXT_PUBLIC_SINGLE_INSTANCE
 ARG NUXT_PUBLIC_DEFAULT_SERVER
+ENV NUXT_PUBLIC_DEFAULT_SERVER=$NUXT_PUBLIC_DEFAULT_SERVER
 
 # Prepare pnpm https://pnpm.io/installation#using-corepack
 RUN corepack enable
