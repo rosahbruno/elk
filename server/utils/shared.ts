@@ -3,7 +3,6 @@ import memory from 'unstorage/drivers/memory'
 import kv from 'unstorage/drivers/cloudflare-kv-http'
 
 import { $fetch } from 'ofetch'
-import type { Storage } from 'unstorage'
 
 import cached from '../cache-driver'
 
@@ -16,7 +15,9 @@ import { driver } from '#storage-config'
 import type { AppInfo } from '~/types'
 import { APP_NAME } from '~/constants'
 
-const storage = useStorage() as Storage
+import { makeAbsolutePath } from '~/utils/path.ts'
+
+const storage = useStorage<AppInfo>()
 
 if (driver === 'fs') {
   const config = useRuntimeConfig()
@@ -36,7 +37,7 @@ else if (driver === 'memory') {
 
 export function getRedirectURI(origin: string, server: string) {
   origin = origin.replace(/\?.*$/, '')
-  return `${origin}/api/${server}/oauth/${encodeURIComponent(origin)}`
+  return `${origin}${makeAbsolutePath(`/api/${server}/oauth/${encodeURIComponent(origin)}`)}`
 }
 
 async function fetchAppInfo(origin: string, server: string) {
@@ -58,7 +59,7 @@ export async function getApp(origin: string, server: string) {
 
   try {
     if (await storage.hasItem(key))
-      return await storage.getItem(key) as Promise<AppInfo>
+      return (storage.getItem(key, {}) as Promise<AppInfo>)
     const appInfo = await fetchAppInfo(origin, server)
     await storage.setItem(key, appInfo)
     return appInfo

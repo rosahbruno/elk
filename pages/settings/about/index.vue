@@ -25,7 +25,7 @@ function handleShowCommit() {
     </template>
 
     <div flex="~ col gap4" w-full items-center justify-center my5>
-      <img :alt="$t('app_logo')" :src="`${''}/logo.svg`" w-24 h-24 class="rtl-flip">
+      <img :alt="$t('app_logo')" :src="makeAbsolutePath('/logo.svg')" w-24 h-24 class="rtl-flip">
       <p text-lg>
         {{ $t('app_desc_short') }}
       </p>
@@ -51,12 +51,12 @@ function handleShowCommit() {
 
     <div h-1px bg-border my2 />
 
-    <SettingsItem
+    <!-- <SettingsItem
       :text="$t('nav.show_intro')"
       icon="i-ri:article-line"
       cursor-pointer large
       @click="openPreviewHelp"
-    />
+    /> -->
 
     <SettingsItem
       text="Mastodon"
@@ -121,7 +121,7 @@ function handleShowCommit() {
         external target="_blank"
       >
         <template #icon>
-          <img :src="`/avatars/${team.github}-60x60.png`" :alt="team.display" rounded-full w-8 h-8 height="32" width="32">
+          <img :src="makeAbsolutePath(`/avatars/${team.github}-60x60.png`)" :alt="team.display" rounded-full w-8 h-8 height="32" width="32">
         </template>
       </SettingsItem>
     </template>

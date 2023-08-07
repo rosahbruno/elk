@@ -12,8 +12,7 @@ export default defineNuxtConfig({
     tsConfig: {
       exclude: ['../service-worker'],
       vueCompilerOptions: {
-        jsxTemplates: true,
-        experimentalRfc436: true,
+        target: 3.3,
       },
     },
   },
@@ -35,6 +34,9 @@ export default defineNuxtConfig({
     '~/modules/pwa/index', // change to '@vite-pwa/nuxt' once released and remove pwa module
     'stale-dep/nuxt',
   ],
+  macros: {
+    setupSFC: true,
+  },
   devtools: {
     enabled: true,
   },
@@ -101,8 +103,7 @@ export default defineNuxtConfig({
       // We use LibreTranslate (https://github.com/LibreTranslate/LibreTranslate) as
       // our default translation server #76
       translateApi: '',
-      // Use the instance where Elk has its Mastodon account as the default
-      defaultServer: 'm.webtoo.ls',
+      defaultServer: 'mozilla.social',
       singleInstance: false,
     },
     storage: {

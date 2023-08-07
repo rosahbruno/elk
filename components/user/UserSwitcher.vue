@@ -34,6 +34,7 @@ function processSignIn() {
   <div sm:min-w-80 max-w-100vw mxa py2 flex="~ col" @click="emit('click')">
     <template v-for="user of sorted" :key="user.id">
       <button
+        v-if="!singleInstanceServer"
         flex rounded px4 py3 text-left
         hover:bg-active cursor-pointer transition-100
         aria-label="Switch user"
@@ -44,9 +45,10 @@ function processSignIn() {
         <div v-if="user.token === currentUser?.token" i-ri:check-line text-primary mya text-2xl />
       </button>
     </template>
-    <div border="t base" pt2>
+    <div :border="singleInstanceServer ? 'base' : 't base'" pt2>
       <CommonDropdownItem
         is="button"
+        v-if="!singleInstanceServer"
         :text="$t('user.add_existing')"
         icon="i-ri:user-add-line"
         w-full

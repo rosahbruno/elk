@@ -5,6 +5,12 @@ WORKDIR /elk
 
 FROM base AS builder
 
+# Make two NUXT_PUBLIC vars changeable during builds
+ARG NUXT_PUBLIC_SINGLE_INSTANCE
+ENV NUXT_PUBLIC_SINGLE_INSTANCE=$NUXT_PUBLIC_SINGLE_INSTANCE
+ARG NUXT_PUBLIC_DEFAULT_SERVER
+ENV NUXT_PUBLIC_DEFAULT_SERVER=$NUXT_PUBLIC_DEFAULT_SERVER
+
 # Prepare pnpm https://pnpm.io/installation#using-corepack
 RUN corepack enable
 
@@ -14,6 +20,7 @@ RUN apk add git --no-cache
 
 # Prepare build deps ( ignore postinstall scripts for now )
 COPY package.json ./
+COPY .npmrc ./
 COPY pnpm-lock.yaml ./
 COPY patches ./patches
 RUN pnpm i --frozen-lockfile --ignore-scripts

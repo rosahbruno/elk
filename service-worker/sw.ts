@@ -9,6 +9,8 @@ import { ExpirationPlugin } from 'workbox-expiration'
 import { onNotificationClick, onPush } from './web-push-notifications'
 import { onShareTarget } from './share-target'
 
+import { createRegExpForRootPath } from '~/utils/path.ts'
+
 declare const self: ServiceWorkerGlobalScope
 
 self.addEventListener('message', (event) => {
@@ -32,8 +34,23 @@ if (import.meta.env.DEV)
 
 // deny api and server page calls
 let denylist: undefined | RegExp[]
-if (import.meta.env.PROD)
-  denylist = [/^\/api\//, /^\/login\//, /^\/oauth\//, /^\/signin\//, /^\/web-share-target\//]
+if (import.meta.env.PROD) {
+  denylist = [
+    createRegExpForRootPath('/api/'),
+    createRegExpForRootPath('/login/'),
+    createRegExpForRootPath('/oauth/'),
+    createRegExpForRootPath('/signin/'),
+    createRegExpForRootPath('/web-share-target/'),
+    // exclude shiki: has its own cache
+    createRegExpForRootPath(/shiki/),
+    // exclude shiki: has its own cache
+    createRegExpForRootPath(/emojis/),
+    // exclude sw: if the user navigates to it, fallback to index.html
+    createRegExpForRootPath('/sw.js$'),
+    // exclude webmanifest: has its own cache
+    createRegExpForRootPath('/manifest-(.*).webmanifest$'),
+  ]
+}
 
 // only cache pages and external assets on local build + start or in production
 if (import.meta.env.PROD) {
@@ -59,7 +76,7 @@ if (import.meta.env.PROD) {
       plugins: [
         new CacheableResponsePlugin({ statuses: [200] }),
         // 365 days max
-        new ExpirationPlugin({ maxAgeSeconds: 60 * 60 * 24 * 365 }),
+        new ExpirationPlugin({ purgeOnQuotaError: true, maxAgeSeconds: 60 * 60 * 24 * 365 }),
       ],
     }),
   )
@@ -74,7 +91,7 @@ if (import.meta.env.PROD) {
       plugins: [
         new CacheableResponsePlugin({ statuses: [200] }),
         // 15 days max
-        new ExpirationPlugin({ maxAgeSeconds: 60 * 60 * 24 * 15 }),
+        new ExpirationPlugin({ purgeOnQuotaError: true, maxAgeSeconds: 60 * 60 * 24 * 15 }),
       ],
     }),
   )
