@@ -24,6 +24,10 @@ function toggleDark() {
       </CommonTooltip>
     </div>
     <div>
+      <NuxtLink href="https://mozilla.social/about" target="_blank" external>
+        About
+      </NuxtLink>
+      &middot;
       <NuxtLink href="https://mozilla.social/privacy-policy" target="_blank" external>
         Privacy Policy
       </NuxtLink>
