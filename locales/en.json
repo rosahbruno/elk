@@ -410,8 +410,8 @@
       "version": "Version"
     },
     "account_settings": {
-      "description": "Edit your account settings in Mastodon UI",
-      "label": "Account settings"
+      "description": "Edit Mastodon preferences",
+      "label": "Advanced settings"
     },
     "interface": {
       "color_mode": "Color Mode",
