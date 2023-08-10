@@ -6,9 +6,6 @@ definePageMeta({
   alias: ['/signin/callback'],
 })
 
-// if (true)
-//   throw createError({ statusCode: 500, statusMessage: 'Internal Server Error' })
-
 const route = useRoute()
 const router = useRouter()
 if (process.client && route.path === '/signin/callback')
