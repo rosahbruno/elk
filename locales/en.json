@@ -535,6 +535,10 @@
         "description": "People can browse your public posts under these hashtags.",
         "label": "Featured hashtags"
       },
+      "fxa_settings": {
+        "description": "Change your password and Firefox account preferences",
+        "label": "Account settings"
+      },
       "label": "Profile"
     },
     "select_a_settings": "Select a setting",
