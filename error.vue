@@ -6,17 +6,18 @@ const { error } = defineProps<{
   error: Partial<NuxtError>
 }>()
 
+const { t } = useI18n()
 // add more custom status codes messages here
 const errorCodes: Record<number, string> = {
-  404: 'Sorry, we can\'t find that page',
-  500: 'Sorry, something went wrong',
+  404: t('Sorry, we can\'t find that page'),
+  500: t('Sorry, something went wrong'),
 }
 
 if (process.dev)
   console.error(error)
 
-const defaultMessage = 'Something went wrong'
-const subtitle = 'We\'re all about a healthy internet but sometimes broken URLs happen.'
+const defaultMessage = t('Something went wrong')
+const subtitle = t('We\'re all about a healthy internet but sometimes broken URLs happen.')
 const message = errorCodes[error.statusCode!] ?? error.message ?? defaultMessage
 </script>
 
