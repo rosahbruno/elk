@@ -18,10 +18,10 @@ router.afterEach(() => {
 </script>
 
 <template>
-  <div flex justify-between sticky top-0 bg-base z-1 py-4 native:py-7 data-tauri-drag-region>
+  <div flex sm-justify-center xl-justify-between sticky top-0 bg-base z-1 pt-4 native:py-7 data-tauri-drag-region>
     <NuxtLink
       flex items-end gap-3
-      py2 px-5
+      py2 sm:px3
       text-2xl
       select-none
       focus-visible:ring="2 current"
