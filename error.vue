@@ -19,6 +19,7 @@ if (process.dev)
 const defaultMessage = t('Something went wrong')
 const subtitle = t('We\'re all about a healthy internet but sometimes broken URLs happen.')
 const message = errorCodes[error.statusCode!] ?? error.message ?? defaultMessage
+const showBack = error.statusCode === 404
 </script>
 
 <template>
@@ -37,6 +38,7 @@ const message = errorCodes[error.statusCode!] ?? error.message ?? defaultMessage
             {{ subtitle }}
           </div>
           <NuxtLink
+            v-if="showBack"
             :aria-label="$t('nav.back')"
             class="btn-text inline-flex flex-items-center -ml-5"
             @click="$router.go(-1)"
