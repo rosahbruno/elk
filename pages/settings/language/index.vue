@@ -24,9 +24,6 @@ const status = computed(() => {
     <div p6>
       <label space-y-2>
         <span block font-medium>{{ $t('settings.language.display_language') }}</span>
-        <span block>
-          {{ status }}
-        </span>
         <SettingsLanguage select-settings />
       </label>
       <h2 py4 mt2 font-bold text-xl flex="~ gap-1" items-center>

@@ -26,22 +26,6 @@ useHydratedHead({
       to="/settings/profile/appearance"
     />
     <SettingsItem
-      command large
-      icon="i-ri:hashtag"
-      :text="isHydrated ? $t('settings.profile.featured_tags.label') : ''"
-      :description="isHydrated ? $t('settings.profile.featured_tags.description') : ''"
-      to="/settings/profile/featured-tags"
-    />
-    <SettingsItem
-      v-if="isHydrated && currentUser"
-      command large
-      icon="i-ri:settings-line"
-      :text="$t('settings.account_settings.label')"
-      :description="$t('settings.account_settings.description')"
-      :to="`https://${currentUser!.server}/auth/edit`"
-      external target="_blank"
-    />
-    <SettingsItem
       v-if="isHydrated && currentUser"
       command large
       icon="i-ri:settings-3-line"
