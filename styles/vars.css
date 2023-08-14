@@ -28,6 +28,9 @@
   --c-success: #67C23A;
   --c-warning: #E6A23C;
   --c-error: #F56C6C;
+
+  --c-moz-logo-background: black;
+  --c-moz-logo-text: white;
 }
 
 .dark {
@@ -56,4 +59,7 @@
 
   --c-bg-btn-disabled: #2a2a2a;
   --c-text-btn-disabled: #919191;
+
+  --c-moz-logo-background: white;
+  --c-moz-logo-text: black;
 }
