@@ -41,5 +41,14 @@ useHydratedHead({
       :to="`https://${currentUser!.server}/auth/edit`"
       external target="_blank"
     />
+    <SettingsItem
+      v-if="isHydrated && currentUser"
+      command large
+      icon="i-ri:settings-3-line"
+      :text="$t('settings.profile.fxa_settings.label')"
+      :description="$t('settings.profile.fxa_settings.description')"
+      to="https://accounts.firefox.com/settings"
+      external target="_blank"
+    />
   </MainContent>
 </template>
