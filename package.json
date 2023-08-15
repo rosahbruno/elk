@@ -97,6 +97,7 @@
     "unimport": "^3.0.12",
     "vite-plugin-pwa": "^0.16.4",
     "vue-advanced-cropper": "^2.8.8",
+    "vue-gtag-next": "^1.14.0",
     "vue-virtual-scroller": "2.0.0-beta.8",
     "workbox-build": "^7.0.0",
     "workbox-window": "^7.0.0"
