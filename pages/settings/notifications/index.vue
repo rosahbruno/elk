@@ -21,11 +21,6 @@ useHydratedHead({
 
     <SettingsItem
       command
-      :text="isHydrated ? $t('settings.notifications.notifications.label') : ''"
-      to="/settings/notifications/notifications"
-    />
-    <SettingsItem
-      command
       :disabled="!pwaEnabled"
       :text="isHydrated ? $t('settings.notifications.push_notifications.label') : ''"
       :description="isHydrated ? $t('settings.notifications.push_notifications.description') : ''"

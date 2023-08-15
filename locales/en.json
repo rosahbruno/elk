@@ -449,7 +449,7 @@
           "reblog": "Reblog your post",
           "title": "What notifications to receive?"
         },
-        "description": "Receive notifications even when you are not using Elk.",
+        "description": "Receive notifications even when you are not using Mozilla.social.",
         "instructions": "Don't forget to save your changes using @:settings.notifications.push_notifications.save_settings button!",
         "label": "Push notifications settings",
         "policy": {
