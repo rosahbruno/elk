@@ -16,7 +16,7 @@ function toggleDark() {
         <b>{{ $t('footer.beta.desc_1') }}</b>
         <NuxtLink href="https://survey.alchemer.com/s3/7470063/mozilla-social-feedback-form" target="_blank" external>
           <u>{{ $t('footer.beta.link') }}</u>
-        </NuxtLink>.
+        </NuxtLink>
       </i18n-t>
     </div>
     <div flex="~ gap2" items-center mb4>
