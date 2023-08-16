@@ -44,7 +44,7 @@ const containerClass = computed(() => {
           </NuxtLink>
           <div :truncate="!noOverflowHidden ? '' : false" flex w-full data-tauri-drag-region class="native-mac:justify-center native-mac:text-center native-mac:sm:justify-start">
             <slot name="title" />
-            <div v-if="!noBetaLabel" ml-12px class="beta">
+            <div v-if="!noBetaLabel" ml-12px font-700 class="beta">
               Beta
             </div>
           </div>
@@ -75,6 +75,5 @@ const containerClass = computed(() => {
     border-radius: 8px;
     border: 2px solid var(--c-primary);
     color: var(--c-primary);
-    font-weight: 700;
   }
 </style>
