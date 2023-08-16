@@ -38,6 +38,7 @@ export default defineConfig({
       'text-inverted': 'text-$c-bg-base',
       'text-secondary': 'text-$c-text-secondary',
       'text-secondary-light': 'text-$c-text-secondary-light',
+      'text-base-light': 'text-$c-text-base-light',
 
       // buttons
       'btn-base': 'cursor-pointer disabled:pointer-events-none disabled:bg-$c-bg-btn-disabled disabled:text-$c-text-btn-disabled',

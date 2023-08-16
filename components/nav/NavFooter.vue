@@ -11,7 +11,7 @@ function toggleDark() {
 
 <template>
   <footer p4 text-sm text-secondary-light flex="~ col">
-    <div mb-15px p10px font-500 class="beta-label">
+    <div bg-primary text-base-light font-500 p-10px mb-15px w-212px b-rd-8px>
       <i18n-t keypath="footer.beta.description">
         <b>{{ $t('footer.beta.desc_1') }}</b>
         <NuxtLink href="https://survey.alchemer.com/s3/7470063/mozilla-social-feedback-form" target="_blank" external>
@@ -48,12 +48,3 @@ function toggleDark() {
     </div>
   </footer>
 </template>
-
-<style>
-  .beta-label {
-    width: 212px;
-    background-color: var(--c-primary);
-    border-radius: 8px;
-    color: var(--c-text-base-light);
-  }
-</style>
