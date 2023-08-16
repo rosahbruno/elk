@@ -7,9 +7,9 @@ export const themesColor = Array.from(
   (_, i) => chroma.hcl((67.14 + i * 40) % 360, 62.19, 59.56).hex(),
 )
 
-export function getThemeColors(primary: string): ThemeColors {
+export function getThemeColors(primary: string, darkPrimary?: string): ThemeColors {
   const c = chroma(primary)
-  const dc = c.brighten(0.1)
+  const dc = darkPrimary ? chroma(darkPrimary) : c.brighten(0.1)
 
   return {
     '--theme-color-name': primary,
@@ -28,4 +28,5 @@ export function getThemeColors(primary: string): ThemeColors {
   }
 }
 
-export const colorsMap = themesColor.map(color => [color, getThemeColors(color)])
+const mozsocColors = ['#5f22cb', getThemeColors('#5f22cb', '#c19eff')]
+export const colorsMap = [mozsocColors, ...themesColor.map(color => [color, getThemeColors(color)])]
