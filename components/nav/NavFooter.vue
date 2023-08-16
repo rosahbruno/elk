@@ -1,4 +1,6 @@
 <script setup lang="ts">
+const { t } = useI18n()
+
 const userSettings = useUserSettings()
 const colorMode = useColorMode()
 
@@ -10,9 +12,12 @@ function toggleDark() {
 <template>
   <footer p4 text-sm text-secondary-light flex="~ col">
     <div mb-15px class="beta-label">
-      <b>Mozilla Social is an experimental beta product.</b> We would love <NuxtLink href="https://survey.alchemer.com/s3/7470063/mozilla-social-feedback-form" target="_blank" external>
-        <u>your feedback</u>
-      </NuxtLink>.
+      <i18n-t keypath="footer.beta.description">
+        <b>{{ $t('footer.beta.desc_1') }}</b>
+        <NuxtLink href="https://survey.alchemer.com/s3/7470063/mozilla-social-feedback-form" target="_blank" external>
+          <u>{{ $t('footer.beta.link') }}</u>
+        </NuxtLink>.
+      </i18n-t>
     </div>
     <div flex="~ gap2" items-center mb4>
       <CommonTooltip :content="$t('nav.toggle_theme')">

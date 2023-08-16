@@ -171,6 +171,13 @@
     "status_not_found": "Post not found",
     "unsupported_file_format": "Unsupported file format"
   },
+  "footer": {
+    "beta": {
+      "desc_1": "Mozilla Social is an experimental beta product.",
+      "description": "{0} We would love {1}.",
+      "link": "your feedback"
+    }
+  },
   "help": {
     "build_preview": {
       "desc1": "You are currently viewing a preview version of Elk from the community - {0}.",
