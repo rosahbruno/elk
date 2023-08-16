@@ -24,7 +24,7 @@ export function getThemeColors(primary: string): ThemeColors {
     '--c-dark-primary-active': dc.darken(0.5).hex(),
     '--c-dark-primary-light': dc.alpha(0.5).hex(),
     '--c-dark-primary-fade': dc.darken(0.1).alpha(0.1).hex(),
-    '--rgb-dark-primary': c.rgb().join(', '),
+    '--rgb-dark-primary': dc.rgb().join(', '),
   }
 }
 
