@@ -55,6 +55,7 @@
     "close": "Close",
     "compose": "Compose",
     "confirm": "Confirm",
+    "create_account": "Create account",
     "done": "Done",
     "edit": "Edit",
     "enter_app": "Enter App",
@@ -689,8 +690,8 @@
   "user": {
     "add_existing": "Add an existing account",
     "server_address_label": "Mastodon Server Address",
-    "sign_in_desc": "Sign in to follow profiles or hashtags, favorite, share and reply to posts, or interact from your account on a different server.",
-    "sign_in_notice_title": "Viewing {0} public data",
+    "sign_in_desc": "Sign up to follow profiles and share posts.",
+    "sign_in_notice_title": "New to Mozilla Social?",
     "sign_out_account": "Sign out {0}",
     "single_instance_sign_in_desc": "Sign in to follow profiles or hashtags, favorite, share and reply to posts.",
     "tip_no_account": "If you don't have a Mastodon account yet, {0}.",
