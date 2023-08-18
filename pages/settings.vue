@@ -67,8 +67,7 @@ const isRootPath = computedEager(() => route.name === 'settings')
               command
               icon="i-ri:information-line"
               :text="isHydrated ? $t('settings.about.label') : ''"
-              to="/settings/about"
-              :match="$route.path.startsWith('/settings/about/')"
+              to="https://mozilla.social/about"
             />
           </div>
         </MainContent>
