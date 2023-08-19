@@ -76,9 +76,9 @@
     "switch_account": "Switch account",
     "vote": "Vote"
   },
-  "app_desc_short": "A nimble Mastodon web client",
-  "app_logo": "Elk Logo",
-  "app_name": "Elk",
+  "app_desc_short": "Decentralized social media powered by Mastodon",
+  "app_logo": "Mozilla Logo",
+  "app_name": "Mozilla Social",
   "attachment": {
     "edit_title": "Description",
     "remove_label": "Remove attachment"

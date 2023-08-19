@@ -210,14 +210,16 @@ export default defineNuxtConfig({
       meta: [
         { name: 'apple-mobile-web-app-status-bar-style', content: 'black-translucent' },
         // open graph social image
-        { property: 'og:title', content: 'Elk' },
-        { property: 'og:description', content: 'A nimble Mastodon web client' },
+        { property: 'og:title', content: 'Mozilla Social' },
+        { property: 'og:description', content: 'Decentralized social media powered by Mastodon' },
         { property: 'og:type', content: 'website' },
-        { property: 'og:image', content: 'https://elk.zone/elk-og.png' },
-        { property: 'og:image:width', content: '3800' },
-        { property: 'og:image:height', content: '1900' },
-        { property: 'og:site_name', content: 'Elk' },
-        { property: 'twitter:site', content: '@elk_zone' },
+        // TODO: host this somewhere less dodgy
+        { property: 'og:image', content: 'https://assets.mozilla.social/site_uploads/files/000/000/001/@2x/ef49d116df000b31.png' },
+        { property: 'og:image:width', content: '2400' },
+        { property: 'og:image:height', content: '1260' },
+        { property: 'og:site_name', content: 'Mozilla Social' },
+        // TODO: change this to Twitter handle of Mozilla Social, if we make one
+        { property: 'twitter:site', content: '@mozilla' },
         { property: 'twitter:card', content: 'summary_large_image' },
       ],
     },
