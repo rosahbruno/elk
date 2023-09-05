@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { withHttps } from 'ufo'
 import type { mastodon } from 'masto'
 import { toggleBlockAccount, toggleMuteAccount, useRelationship } from '~~/composables/masto/relationship'
 
@@ -32,6 +33,11 @@ const userSettings = useUserSettings()
 const useStarFavoriteIcon = usePreferences('useStarFavoriteIcon')
 
 const isAuthor = $computed(() => status.account.id === currentUser.value?.account.id)
+const statusRoute = $computed(() => {
+  const route = getStatusRoute(status)
+  return withHttps(route.href.slice(1))
+})
+const notLocal = $computed(() => status.url !== statusRoute)
 
 const { client } = $(useMasto())
 
@@ -42,10 +48,9 @@ function getPermalinkUrl(status: mastodon.v1.Status) {
   return null
 }
 
-async function copyLink(status: mastodon.v1.Status) {
-  const url = getPermalinkUrl(status)
-  if (url)
-    await clipboard.copy(url)
+async function copyLink() {
+  if (statusRoute)
+    await clipboard.copy(statusRoute)
 }
 
 async function copyOriginalLink(status: mastodon.v1.Status) {
@@ -187,10 +192,11 @@ function showFavoritedAndBoostedBy() {
           :text="$t('menu.copy_link_to_post')"
           icon="i-ri:link"
           :command="command"
-          @click="copyLink(status)"
+          @click="copyLink()"
         />
 
         <CommonDropdownItem
+          v-if="notLocal"
           :text="$t('menu.copy_original_link_to_post')"
           icon="i-ri:links-fill"
           :command="command"
@@ -214,7 +220,7 @@ function showFavoritedAndBoostedBy() {
           @click="toggleMute()"
         />
 
-        <NuxtLink v-if="status.url" :to="status.url" external target="_blank">
+        <NuxtLink v-if="status.url && notLocal" :to="status.url" external target="_blank">
           <CommonDropdownItem
             :text="$t('menu.open_in_original_site')"
             icon="i-ri:arrow-right-up-line"
