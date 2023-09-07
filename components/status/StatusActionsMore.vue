@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { withHttps } from 'ufo'
 import type { mastodon } from 'masto'
 import { toggleBlockAccount, toggleMuteAccount, useRelationship } from '~~/composables/masto/relationship'
 
@@ -32,25 +31,25 @@ const { t } = useI18n()
 const userSettings = useUserSettings()
 const useStarFavoriteIcon = usePreferences('useStarFavoriteIcon')
 
+const isSingleInstanceServer = useRuntimeConfig().public.singleInstance
 const isAuthor = $computed(() => status.account.id === currentUser.value?.account.id)
-const statusRoute = $computed(() => {
-  const route = getStatusRoute(status)
-  return withHttps(route.href.slice(1))
-})
-const notLocal = $computed(() => status.url !== statusRoute)
+const notLocal = $computed(() => getServerName(status.account) !== currentServer.value)
+const statusRoute = $computed(() => getStatusRoute(status, isSingleInstanceServer))
 
 const { client } = $(useMasto())
 
-function getPermalinkUrl(status: mastodon.v1.Status) {
-  const url = getStatusPermalinkRoute(status)
+function getPermalinkUrl() {
+  const url = statusRoute.href
+
   if (url)
-    return `${location.origin}/${url}`
+    return `${location.origin}${url}`
   return null
 }
 
 async function copyLink() {
-  if (statusRoute)
-    await clipboard.copy(statusRoute)
+  const url = getPermalinkUrl()
+  if (url)
+    await clipboard.copy(url)
 }
 
 async function copyOriginalLink(status: mastodon.v1.Status) {
@@ -60,8 +59,8 @@ async function copyOriginalLink(status: mastodon.v1.Status) {
 }
 
 const { share, isSupported: isShareSupported } = useShare()
-async function shareLink(status: mastodon.v1.Status) {
-  const url = getPermalinkUrl(status)
+async function shareLink() {
+  const url = getPermalinkUrl()
   if (url)
     await share({ url })
 }
@@ -208,7 +207,7 @@ function showFavoritedAndBoostedBy() {
           :text="$t('menu.share_post')"
           icon="i-ri:share-line"
           :command="command"
-          @click="shareLink(status)"
+          @click="shareLink()"
         />
 
         <CommonDropdownItem
@@ -298,7 +297,7 @@ function showFavoritedAndBoostedBy() {
               @click="toggleBlockAccount(useRelationship(status.account).value!, status.account)"
             />
 
-            <template v-if="getServerName(status.account) && getServerName(status.account) !== currentServer">
+            <template v-if="notLocal">
               <CommonDropdownItem
                 v-if="!useRelationship(status.account).value?.domainBlocking"
                 :text="$t('menu.block_domain', [getServerName(status.account)])"

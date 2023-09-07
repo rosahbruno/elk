@@ -33,11 +33,11 @@ export function getReportRoute(id: string | number) {
   return `https://${currentUser.value?.server}/admin/reports/${encodeURIComponent(id)}`
 }
 
-export function getStatusRoute(status: mastodon.v1.Status) {
+export function getStatusRoute(status: mastodon.v1.Status, singleInstance?: boolean) {
   return useRouter().resolve({
     name: 'status',
     params: {
-      server: currentServer.value,
+      ...(!singleInstance && { server: currentServer.value }),
       account: extractAccountHandle(status.account),
       status: status.id,
     },
