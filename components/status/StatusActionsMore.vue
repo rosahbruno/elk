@@ -51,7 +51,7 @@ async function copyLink() {
     await clipboard.copy(url)
 }
 
-async function copyOriginalLink(status: mastodon.v1.Status) {
+async function copyOriginalLink() {
   const url = status.url
   if (url)
     await clipboard.copy(url)
@@ -198,7 +198,7 @@ function showFavoritedAndBoostedBy() {
           :text="$t('menu.copy_original_link_to_post')"
           icon="i-ri:links-fill"
           :command="command"
-          @click="copyOriginalLink(status)"
+          @click="copyOriginalLink()"
         />
 
         <CommonDropdownItem
