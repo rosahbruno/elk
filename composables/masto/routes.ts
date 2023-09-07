@@ -34,10 +34,11 @@ export function getReportRoute(id: string | number) {
 }
 
 export function getStatusRoute(status: mastodon.v1.Status) {
+  const singleInstanceServer = useRuntimeConfig().public.singleInstance
   return useRouter().resolve({
     name: 'status',
     params: {
-      server: currentServer.value,
+      ...(!singleInstanceServer && { server: currentServer.value }),
       account: extractAccountHandle(status.account),
       status: status.id,
     },

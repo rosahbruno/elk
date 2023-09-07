@@ -104,7 +104,7 @@ export default defineNuxtConfig({
       // our default translation server #76
       translateApi: '',
       defaultServer: 'mozilla.social',
-      singleInstance: false,
+      singleInstance: true,
     },
     storage: {
       fsBase: 'node_modules/.cache/app',
