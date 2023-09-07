@@ -31,10 +31,9 @@ const { t } = useI18n()
 const userSettings = useUserSettings()
 const useStarFavoriteIcon = usePreferences('useStarFavoriteIcon')
 
-const isSingleInstanceServer = useRuntimeConfig().public.singleInstance
 const isAuthor = $computed(() => status.account.id === currentUser.value?.account.id)
 const notLocal = $computed(() => getServerName(status.account) !== currentServer.value)
-const statusRoute = $computed(() => getStatusRoute(status, isSingleInstanceServer))
+const statusRoute = $computed(() => getStatusRoute(status))
 
 const { client } = $(useMasto())
 

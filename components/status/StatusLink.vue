@@ -8,8 +8,7 @@ const props = defineProps<{
 
 const el = ref<HTMLElement>()
 const router = useRouter()
-const isSingleInstanceServer = useRuntimeConfig().public.singleInstance
-const statusRoute = $computed(() => getStatusRoute(props.status, isSingleInstanceServer))
+const statusRoute = $computed(() => getStatusRoute(props.status))
 
 function onclick(evt: MouseEvent | KeyboardEvent) {
   const path = evt.composedPath() as HTMLElement[]
