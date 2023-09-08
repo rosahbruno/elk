@@ -22,13 +22,12 @@ const { busy, oauth, singleInstanceServer } = useSignIn()
     <div
       v-if="singleInstanceServer"
       flex="~ row"
-      gap-x-1 items-center justify-center pl-28px pr-2 xl:hidden
+      gap-x-1 items-center justify-center pl-16px xl:pl-28px sm:pr-2 xl:hidden
     >
       <button
         flex="~ row"
-        mr-8px
-        gap-x-1 items-center justify-center btn-solid text-sm font-600 p-x-11px p-y-11px xl:hidden
-        b-rd-8px
+        gap-x-1 items-center justify-center text-sm p-x-10px p-y-10px xl:hidden text-center font-600
+        sm:mr-8px sm:btn-solid sm:btn-outline
         :disabled="busy"
         @click="oauth('signup')"
       >
@@ -36,10 +35,9 @@ const { busy, oauth, singleInstanceServer } = useSignIn()
       </button>
       <button
         flex="~ row"
-        gap-x-1 items-center justify-center text-sm p-x-10px p-y-10px xl:hidden
-        border-1 border-primary btn-outline
-        text-primary text-center font-600
-        b-rd-8px
+        mr-8px
+        gap-x-1 items-center justify-center text-sm font-600 p-x-11px p-y-11px xl:hidden
+        sm:border-1 sm:border-primary sm:btn-outline sm:b-rd-8px
         :disabled="busy"
         @click="oauth()"
       >
