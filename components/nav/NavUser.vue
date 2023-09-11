@@ -27,7 +27,7 @@ const { busy, oauth, singleInstanceServer } = useSignIn()
       <button
         flex="~ row"
         gap-x-1 items-center justify-center text-sm p-x-10px p-y-10px xl:hidden text-center font-600
-        sm:mr-8px sm:btn-solid sm:btn-outline
+        sm:mr-8px sm:btn-solid sm:btn-outline sm:b-rd-8px
         :disabled="busy"
         @click="oauth('signup')"
       >
