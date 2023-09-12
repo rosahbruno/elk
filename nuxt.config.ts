@@ -255,6 +255,7 @@ export default defineNuxtConfig({
         'img-src': ['\'self\'', 'https:', 'http:', 'data:', 'blob:'],
         'media-src': ['\'self\'', 'https:', 'http:'],
         'object-src': ['\'none\''],
+        // Support GA4 per https://developers.google.com/tag-platform/tag-manager/web/csp
         'script-src': ['\'self\'', '\'unsafe-inline\'', '\'wasm-unsafe-eval\'', 'www.googletagmanager.com', 'www.google-analytics.com', 'tagmanager.google.com'],
         'script-src-attr': ['\'none\''],
         'style-src': ['\'self\'', '\'unsafe-inline\''],
