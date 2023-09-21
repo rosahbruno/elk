@@ -34,5 +34,14 @@ useHydratedHead({
       to="https://accounts.firefox.com/settings"
       external target="_blank"
     />
+    <SettingsItem
+      v-if="isHydrated && currentUser"
+      command large
+      icon="i-ri:settings-3-line"
+      :text="$t('settings.profile.moso_settings.label')"
+      :description="$t('settings.profile.moso_settings.description')"
+      to="https://mozilla.social/auth/edit"
+      external target="_blank"
+    />
   </MainContent>
 </template>
