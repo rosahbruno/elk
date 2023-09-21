@@ -6,8 +6,6 @@ const { locale: lang } = useI18n()
 const locale = getLanguageForRecs(lang.value)
 
 const recommendations: Recommendation[] = await $fetch(`/api/recommendations?locale=${locale}`)
-
-// console.log({ recommendations })
 </script>
 
 <template>
