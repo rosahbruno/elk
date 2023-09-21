@@ -24,6 +24,10 @@ const handlers = [
     route: '/api/list-servers',
     handler: defineLazyEventHandler(() => import('~/server/api/list-servers').then(r => r.default || r)),
   },
+  {
+    route: '/api/recommendations',
+    handler: defineLazyEventHandler(() => import('~/server/api/recommendations').then(r => r.default || r)),
+  },
 ]
 
 // @ts-expect-error undeclared global window property
