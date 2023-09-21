@@ -549,9 +549,13 @@
       },
       "fxa_settings": {
         "description": "Change your password and Firefox account preferences",
-        "label": "Account settings"
+        "label": "Firefox account settings"
       },
-      "label": "Profile"
+      "label": "Profile",
+      "moso_settings": {
+        "description": "Manage approved apps, move or delete your Mastodon account",
+        "label": "Mozilla Social account settings"
+      }
     },
     "select_a_settings": "Select a setting",
     "users": {
