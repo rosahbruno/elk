@@ -2,10 +2,11 @@ import { withoutProtocol } from 'ufo'
 import type { mastodon } from 'masto'
 
 export function getAccountRoute(account: mastodon.v1.Account) {
+  const singleInstanceServer = useRuntimeConfig().public.singleInstance
   return useRouter().resolve({
     name: 'account-index',
     params: {
-      server: currentServer.value,
+      ...(!singleInstanceServer && { server: currentServer.value }),
       account: extractAccountHandle(account),
     },
   })
