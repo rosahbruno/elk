@@ -248,15 +248,15 @@ export default defineNuxtConfig({
       contentSecurityPolicy: {
         'default-src': ['\'self\''],
         'base-uri': ['\'self\''],
-        'connect-src': ['\'self\'', 'https:', 'http:', 'wss:', 'ws:'],
+        // Support GA4 per https://developers.google.com/tag-platform/tag-manager/web/csp
+        'connect-src': ['\'self\'', 'https:', 'http:', 'wss:', 'ws:', 'https://*.google-analytics.com', 'https://*.analytics.google.com', 'https://*.googletagmanager.com'],
         'font-src': ['\'self\''],
         'form-action': ['\'none\''],
         'frame-ancestors': ['\'none\''],
-        'img-src': ['\'self\'', 'https:', 'http:', 'data:', 'blob:'],
+        'img-src': ['\'self\'', 'https:', 'http:', 'data:', 'blob:', 'https://*.google-analytics.com', 'https://*.googletagmanager.com'],
         'media-src': ['\'self\'', 'https:', 'http:'],
         'object-src': ['\'none\''],
-        // Support GA4 per https://developers.google.com/tag-platform/tag-manager/web/csp
-        'script-src': ['\'self\'', '\'unsafe-inline\'', '\'wasm-unsafe-eval\'', 'www.googletagmanager.com', 'www.google-analytics.com', 'tagmanager.google.com'],
+        'script-src': ['\'self\'', '\'unsafe-inline\'', '\'wasm-unsafe-eval\'', 'https://*.googletagmanager.com'],
         'script-src-attr': ['\'none\''],
         'style-src': ['\'self\'', '\'unsafe-inline\''],
         'upgrade-insecure-requests': true,
