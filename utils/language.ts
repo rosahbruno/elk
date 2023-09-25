@@ -28,3 +28,15 @@ export function matchLanguages(languages: string[], acceptLanguages: readonly st
 
   return null
 }
+
+export function getLanguageForRecs(lang: string): string {
+  const availableLocales = [
+    'fr', 'fr-FR',
+    'es', 'es-ES',
+    'it', 'it-IT',
+    'en', 'en-CA', 'en-GB', 'en-US',
+    'de', 'de-DE', 'de-AT', 'de-CH',
+  ]
+
+  return availableLocales.includes(lang) ? lang : 'en'
+}
