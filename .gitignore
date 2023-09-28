@@ -17,3 +17,6 @@ public/emojis
 *~
 *swp
 *swo
+
+.venv
+telemetry/generated
